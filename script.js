@@ -12,9 +12,33 @@ function addGetInputClickAction() {
   // inputDOMエレメントを取得
   const input = document.getElementById("choice")
 
+
+  /* drag and drop */
+  const uploadArea = document.getElementById("upload_area")
+
+  uploadArea.addEventListener("dragover", (event) => {
+    event.preventDefault();
+  });
+
+  uploadArea.addEventListener("dragleave", (event) => {
+  });
+
+  uploadArea.addEventListener("drop", (event) => {
+    event.preventDefault();
+    input.files = event.dataTransfer.files;
+    if (event.dataTransfer.files[0].name.substr(-4) === ".pdf") {
+      document.getElementById("file_name").innerText = event.dataTransfer.files[0].name
+      inputOriginFile = event.dataTransfer.files[0]
+
+      document.getElementById("submit").disabled = false
+    }
+    else{
+      document.getElementById("attention").classList.add("red-font")
+    }
+  })
+
   //ファイルが変更されたら...
   input.addEventListener("change", function () {
-
     const tmp = input.files[0];
     if (tmp != void 0) {
       inputOriginFile = input.files[0]; //中身を変える
@@ -28,6 +52,8 @@ function addGetInputClickAction() {
       }
     }
   })
+
+
 }
 
 addGetInputClickAction()
@@ -44,7 +70,6 @@ function addSubmitClickAction() {
   submit.addEventListener("click", function () {
     step1()
 
-    //ここまで
     var formdata = new FormData();
     formdata.append("file", inputOriginFile);
     //生成
@@ -54,13 +79,13 @@ function addSubmitClickAction() {
       // 成功した場合
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
         response = JSON.parse(xmlhttp.responseText)
-        if(response.msg == "success"){
+        //エラーハンドリング
+        if (response.msg == "success") {
           step2()
-        }
-        else{
+        } else {
           stepError()
         }
-        
+
       }
     };
     // APIを開いて
