@@ -54,7 +54,6 @@ function addSubmitClickAction() {
       // 成功した場合
       if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
         response = JSON.parse(xmlhttp.responseText)
-        console.log(response)
         if(response.msg == "success"){
           step2()
         }
@@ -65,7 +64,7 @@ function addSubmitClickAction() {
       }
     };
     // APIを開いて
-    xmlhttp.open("POST", "http://54.64.51.76:5000/api", true);
+    xmlhttp.open("POST", "https://shrouded-dawn-55606.herokuapp.com/api", true);
     // 叩く。
     xmlhttp.send(formdata);
 
