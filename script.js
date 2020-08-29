@@ -216,22 +216,27 @@ function step3() {
 
   document.getElementById("frame").innerHTML =
     `<form class="upload-container mb-3">
-    <!-- ドラッグ＆ドロップ -->
-    <p id="attention">.pdf形式の楽譜ファイルを選択してください。</p>
-    <div class="h-full p-3">
-      <input id="choice" type="file" class="hide" accept="application/pdf"/>
-      <label for="choice" class="d8d-container">
-        <P>
-        <span class="block">ドラッグ＆ドロップでファイルを追加</span>
-        <span class="block pt-1">分割するファイル名:</span>
-        <span id="file_name" class="block"></span>
-        </P>
-      </label>
-    </div>
-  </form>
-  <div>
-    <button id="submit" class="common-btn mx-auto" disabled>楽譜を分割する</button>
-  </div>`
+          <!-- ドラッグ＆ドロップ -->
+          <p id="attention">.pdf形式の楽譜ファイルを選択してください。</p>
+          <div class="h-full p-3">
+            <input id="choice" type="file" class="hide" accept="application/pdf" />
+            <div class="d8d-container" id="upload_area">
+              <p>
+                
+                <span class="block">ドラッグ＆ドロップ</span>
+                <span class="block">もしくは</span>
+                <label class="btn-dummy" for="choice">ファイルを選択</label>　
+                <span class="block pt-1">分割するファイル名:</span>
+                
+                <span id="file_name" class="block"></span>
+              </p>
+            </div>
+          </div>
+        </form>
+        <div>
+          <button id="submit" class="common-btn mx-auto" disabled>楽譜を分割する</button>
+        </div>
+      </div>`
 
   addGetInputClickAction();
   addSubmitClickAction();
@@ -256,21 +261,26 @@ function stepError() {
 
     document.getElementById("frame").innerHTML =
       `<form class="upload-container mb-3">
-    <!-- ドラッグ＆ドロップ -->
-    <p id="attention">.pdf形式の楽譜ファイルを選択してください。</p>
-    <div class="h-full p-3">
-      <input id="choice" type="file" class="hide" accept="application/pdf"/>
-      <label for="choice" class="d8d-container">
-        <P>
-        <span class="block">ドラッグ＆ドロップでファイルを追加</span>
-        <span class="block pt-1">分割するファイル名:</span>
-        <span id="file_name" class="block"></span>
-        </P>
-      </label>
+      <!-- ドラッグ＆ドロップ -->
+      <p id="attention">.pdf形式の楽譜ファイルを選択してください。</p>
+      <div class="h-full p-3">
+        <input id="choice" type="file" class="hide" accept="application/pdf" />
+        <div class="d8d-container" id="upload_area">
+          <p>
+            
+            <span class="block">ドラッグ＆ドロップ</span>
+            <span class="block">もしくは</span>
+            <label class="btn-dummy" for="choice">ファイルを選択</label>　
+            <span class="block pt-1">分割するファイル名:</span>
+            
+            <span id="file_name" class="block"></span>
+          </p>
+        </div>
+      </div>
+    </form>
+    <div>
+      <button id="submit" class="common-btn mx-auto" disabled>楽譜を分割する</button>
     </div>
-  </form>
-  <div>
-    <button id="submit" class="common-btn mx-auto" disabled>楽譜を分割する</button>
   </div>`
 
     addGetInputClickAction();
